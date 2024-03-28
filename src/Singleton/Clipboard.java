@@ -21,4 +21,5 @@ public class Clipboard {
     public String paste(){
         return this.value;
     }
+
 }
