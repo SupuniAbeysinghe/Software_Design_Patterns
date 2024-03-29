@@ -1,5 +1,8 @@
 package Adoptor;
 
+import Adoptor.Image.JpegImageViewer;
+import Adoptor.Image.PngImageViewer;
+
 public class MediaPlayerFactory {
 
     public static MediaPlayer getInstance(String file) {
@@ -11,8 +14,15 @@ public class MediaPlayerFactory {
         if (file.endsWith(".mp4")) {
             mediaPlayer = new MP4MediaPlayer();
         }
+        if (file.endsWith(".jpeg")){
+            mediaPlayer = new ImageAdaptor(new JpegImageViewer());
+        }
+        if (file.endsWith(".png")){
+            mediaPlayer = new ImageAdaptor(new PngImageViewer());
+        }
 
         return mediaPlayer;
+
     }
 
 }
