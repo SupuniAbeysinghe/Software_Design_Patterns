@@ -2,18 +2,28 @@ package Observer;
 
 public class Main {
     public static void main(String[] args) {
-        Observer observer1 = new Type1Observer();
-        Observer observer2 = new Type2Observer();
+        Observer winPredictor = new WinPredictorObserver();
+        Observer battingCard = new BattingCardObserver();
+        Observer bowlingCard = new BowlingCardObserver();
+        Observer records = new RecordObserver();
+
 
         Subject subject = new Subject();
-        subject.registerObserver(observer1);
-        subject.registerObserver(observer2);
+        subject.registerObserver(winPredictor);
+        subject.registerObserver(battingCard);
+        subject.registerObserver(bowlingCard);
+        subject.registerObserver(records);
 
-        subject.notifyAllObservers("Event 1");
+        MatchEvent event1 = new MatchEvent();
+        event1.setBowlerName("Malinga");
+        event1.setBat1Score(100);
+        event1.setBat2Score(50);
 
-        subject.removeObserver(observer1);
+        subject.notifyAllObservers(event1);
 
-        subject.notifyAllObservers("Event 2");
+        subject.removeObserver(winPredictor);
+
+        subject.notifyAllObservers(event1);
 
 
     }
